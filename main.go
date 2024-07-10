@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"ufc-stats-web-scraper/scrapers"
+)
 
 func main() {
-	fmt.Println("Hello world!")
+	scrapers.ScrapeCompletedEvents()
 }
