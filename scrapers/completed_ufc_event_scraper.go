@@ -18,6 +18,11 @@ func ScrapeCompletedEvents() {
 	// Create an event handler for scraping UFC event data from table rows.
 	c.OnHTML("tr.b-statistics__table-row", func(e *colly.HTMLElement) {
 
+		// Skip the first two table rows. They are empty in the website HTML and will produce empty cells in the output .csv file.
+		if e.Index == 0 || e.Index == 1 {
+			return
+		}
+
 		// Create an empty UFC event structure.
 		ufcEvent := models.UFCEvent{}
 
